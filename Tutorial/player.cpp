@@ -5,6 +5,7 @@
 Player::Player(const Game& mygame)
 	: GameObject(mygame)
 {
+	
 }
 
 void Player::update()
@@ -41,6 +42,36 @@ void Player::update()
 	{
 		pos_y = CANVAS_HEIGHT;
 	}
+
+	//Create Bullet
+
+	if (!bullet) {
+		bullet = new Bullet(game);
+	}
+
+	if (flag) {
+		bullet->setX(pos_x);
+		bullet->setY(pos_y);
+	}
+
+	graphics::MouseState ms;
+	graphics::getMouseState(ms);
+	
+	if (ms.button_left_pressed) {
+		flag = false;
+	}
+
+	if (!flag){
+		bullet->update();
+	}
+
+	if (bullet && !bullet->isActive()) {
+		delete bullet;
+		bullet = nullptr;
+		flag = true;
+	}
+
+	
 }
 
 void Player::draw()
@@ -77,6 +108,10 @@ void Player::draw()
 		br.gradient = false;
  		Disk hull = getCollisionHull();
 		graphics::drawDisk(hull.cx, hull.cy, hull.radius, br);
+	}
+	
+	if (bullet) {
+		bullet->draw();
 	}
 }
 

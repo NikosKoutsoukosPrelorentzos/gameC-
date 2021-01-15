@@ -119,15 +119,15 @@ void Game::drawStartScreen()
 	sprintf_s(info, "Press Enter to start");
 	graphics::drawText(CANVAS_WIDTH/2, CANVAS_HEIGHT/2, 30, info, br);
 
-	graphics::MouseState ms;
-	graphics::getMouseState(ms);
-	
-	graphics::drawDisk(window2canvasX(ms.cur_pos_x),window2canvasY(ms.cur_pos_y) , 10, br);
 }
+
 
 void Game::drawLevelScreen()
 {
+	
+
 	graphics::Brush br;
+	
 	br.texture = std::string(ASSET_PATH) + "bathroom_background.png";
 	br.outline_opacity = 0.0f;
 
@@ -182,6 +182,13 @@ void Game::drawLevelScreen()
 	br.gradient = false;
 	br.fill_opacity = 0.0f;
 	graphics::drawRect(CANVAS_WIDTH - 100, 30, 120, 20, br);
+
+	graphics::Brush fr;
+
+	graphics::MouseState ms;
+	graphics::getMouseState(ms);
+
+	graphics::drawDisk(window2canvasX(ms.cur_pos_x), window2canvasY(ms.cur_pos_y), 10, fr);
 }
 
 void Game::update()

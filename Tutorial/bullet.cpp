@@ -5,11 +5,35 @@
 #include "util.h"
 #include "game.h"
 #include "player.h"
-
+#include <math.h>
 
 void Bullet::update()
 {
-	pos_x -= speed * graphics::getDeltaTime() * 0.2f;
+	graphics::MouseState ms;
+	graphics::getMouseState(ms);
+
+	if (!fired) {
+		xBullet = pos_x;
+		yBullet = pos_y;
+		x = window2canvasX(ms.cur_pos_x);
+		y = window2canvasY(ms.cur_pos_y);
+		fired = true;
+	}
+
+
+	angle = atan2(y - yBullet, x - xBullet);
+		
+	dx = (cos(angle) * speed);
+	dy = (sin(angle) * speed);
+
+	pos_x += dx;
+	pos_y += dy;
+
+	if (pos_x < -BulletSize || pos_y < -BulletSize || pos_x > CANVAS_WIDTH + BulletSize * 2 || pos_y > CANVAS_HEIGHT + BulletSize * 2)
+	{
+		active = false;
+	}
+	
 }
 
 void Bullet::draw()
@@ -34,10 +58,7 @@ void Bullet::draw()
 
 void Bullet::init()
 {
-	//pos_x  game.playerX();
-
-	pos_y = CANVAS_HEIGHT / 3;
-	speed = 0.4f;
+	speed = 1.0f;
 }
 
 Bullet::Bullet(const Game& mygame)
@@ -56,3 +77,13 @@ Disk Bullet::getCollisionHull() const
 	return Disk();
 }
 
+float Bullet::window2canvasX(float x)
+{
+
+	return x * CANVAS_WIDTH / (float)window_width;
+}
+
+float Bullet::window2canvasY(float y)
+{
+	return y * CANVAS_HEIGHT / (float)window_height;
+}
