@@ -48,6 +48,7 @@ bool Game::checkCollision(Enemy *meteoritee)
 		float dx2 = d3.cx - d2.cx;
 		float dy2 = d3.cy - d2.cy;
 		if (sqrt(dx2 * dx2 + dy2 * dy2) < d3.radius + d2.radius) {
+			score++;
 			return true;
 		}
 	}
@@ -83,6 +84,9 @@ void Game::updateLevelScreen()
 	}
 	if (player)
 	{
+		if (player->getRemainingLife() == 0.0f) {
+			status = STATUS_FINISH;
+		}
 		player->update();
 	}
 
@@ -121,6 +125,15 @@ void Game::updateLevelScreen()
 		delete meteorite3;
 		meteorite3 = nullptr;
 	}
+	
+}
+
+void Game::drawFinishScreen()
+{
+	graphics::Brush br;
+	char info[40];
+	sprintf_s(info, "You got flushed!!!");
+	graphics::drawText(CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2, 30, info, br);
 }
 
 void Game::drawStartScreen()
@@ -175,6 +188,15 @@ void Game::drawLevelScreen()
 
 	}
 
+	/*
+	char info[40];
+	sprintf_s(info,"Score", (char)score);
+	graphics::drawText(50, 50, 40, info, br);
+	*/
+
+
+
+
 	float player_Life = player ? player->getRemainingLife() : 0.0f;
 	br.outline_opacity = 1.0f;
 	br.fill_color[0] = 1.0f;
@@ -222,9 +244,12 @@ void Game::draw()
 	if (status == STATUS_START) {
 		drawStartScreen();
 	}
-	else
+	else if(status == STATUS_PLAYING)
 	{
 		drawLevelScreen();
+	}
+	else {
+		drawFinishScreen();
 	}
 
 }

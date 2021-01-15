@@ -4,7 +4,8 @@
 
 class Game 
 {
-	typedef enum {STATUS_START, STATUS_PLAYING} status_t;
+	int score = 0;
+	typedef enum {STATUS_START, STATUS_PLAYING,STATUS_FINISH} status_t;
 	Bullet* bullet = nullptr;
 	Player* player = nullptr;
 	bool player_initialized = false;
@@ -25,6 +26,7 @@ class Game
 	void updateStartScreen();
 	void updateLevelScreen();
 
+	void drawFinishScreen();
 	void drawStartScreen();
 	void drawLevelScreen();
 public:

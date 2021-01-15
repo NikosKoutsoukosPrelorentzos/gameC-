@@ -30,6 +30,7 @@ public:
 		const override;
 
 	float getRemainingLife() { return life; }
+
 	void drainLife(float amount)
 	{
 		life = std::max<float>(0.0f, life - amount);
