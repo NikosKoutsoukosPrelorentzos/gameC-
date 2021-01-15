@@ -49,6 +49,7 @@ void Enemy::update()
 	{
 		active = false;
 	}
+
 }
 
 void Enemy::draw()

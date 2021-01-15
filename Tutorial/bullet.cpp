@@ -58,7 +58,7 @@ void Bullet::draw()
 
 void Bullet::init()
 {
-	speed = 1.0f;
+	speed = 3.0f;
 }
 
 Bullet::Bullet(const Game& mygame)
@@ -67,14 +67,17 @@ Bullet::Bullet(const Game& mygame)
 	init();
 }
 
-
 Bullet::~Bullet()
 {
 }
 
 Disk Bullet::getCollisionHull() const
 {
-	return Disk();
+	Disk disk;
+	disk.cx = pos_x;
+	disk.cy = pos_y;
+	disk.radius = 1.0f;
+	return disk;
 }
 
 float Bullet::window2canvasX(float x)

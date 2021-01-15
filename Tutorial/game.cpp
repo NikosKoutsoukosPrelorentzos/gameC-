@@ -39,12 +39,23 @@ bool Game::checkCollision(Enemy *meteoritee)
 	if (!player || !meteoritee) {
 		return false;
 	}
+	bullet = player->currBullet();
 	Disk d1 = player->getCollisionHull();
 	Disk d2 = meteoritee->getCollisionHull();
+
+	if (bullet) {
+		Disk d3 = bullet->getCollisionHull();
+		float dx2 = d3.cx - d2.cx;
+		float dy2 = d3.cy - d2.cy;
+		if (sqrt(dx2 * dx2 + dy2 * dy2) < d3.radius + d2.radius) {
+			return true;
+		}
+	}
+
 	float dx = d1.cx - d2.cx;
 	float dy = d1.cy - d2.cy;
 
-	if (sqrt(dx * dx + dy * dy) < d1.radius + d2.radius) 
+	if (sqrt(dx * dx + dy * dy) < d1.radius + d2.radius)
 	{
 		player->drainLife(0.1f);
 		return true;

@@ -13,6 +13,7 @@ class Player : public GameObject, public Collidable
 	float life = 1.0f;
 
 public:
+	Bullet* currBullet();
 	Player(const class Game& mygame);
 	void update() override;
 	void draw() override;

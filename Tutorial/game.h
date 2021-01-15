@@ -5,9 +5,10 @@
 class Game 
 {
 	typedef enum {STATUS_START, STATUS_PLAYING} status_t;
+	Bullet* bullet = nullptr;
 	Player* player = nullptr;
 	bool player_initialized = false;
-	bool debug_mode = false;
+	bool debug_mode = true;
 	Enemy* meteorite = nullptr;
 	Enemy* meteorite2 = nullptr;
 	Enemy* meteorite3 = nullptr;

@@ -2,6 +2,14 @@
 #include "graphics.h"
 #include "game.h"
 
+Bullet* Player::currBullet()
+{
+	if (bullet) {
+		return bullet;
+	}
+	return nullptr;
+}
+
 Player::Player(const Game& mygame)
 	: GameObject(mygame)
 {

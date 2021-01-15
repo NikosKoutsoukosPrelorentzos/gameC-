@@ -14,7 +14,7 @@ class Bullet : public GameObject, public Collidable
 	double dx;
 	double dy;
 	bool flag = true;
-	float height = 1.0f;
+	float height = 0.1f;
 	float pos_x;
 	float pos_y;
 	float speed;
