@@ -220,8 +220,10 @@ void Game::drawLevelScreen()
 
 	graphics::MouseState ms;
 	graphics::getMouseState(ms);
-
-	graphics::drawDisk(window2canvasX(ms.cur_pos_x), window2canvasY(ms.cur_pos_y), 10, fr);
+	fr.texture = std::string(ASSET_PATH) + "target.png";
+	fr.outline_opacity = 0.0f;
+	fr.gradient = false;
+	graphics::drawRect(window2canvasX(ms.cur_pos_x), window2canvasY(ms.cur_pos_y), 30,30, fr);
 }
 
 void Game::update()
