@@ -15,48 +15,54 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="..\..\..\..\Downloads\Tutorial-master\Tutorial-master\Tutorial\warrior.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="game.cpp">
+    <ClCompile Include="..\..\..\..\Downloads\Tutorial-master\Tutorial-master\Tutorial\bullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="player.cpp">
+    <ClCompile Include="..\..\..\..\Downloads\Tutorial-master\Tutorial-master\Tutorial\enemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="enemy.cpp">
+    <ClCompile Include="..\..\..\..\Downloads\Tutorial-master\Tutorial-master\Tutorial\game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="gameobject.cpp">
+    <ClCompile Include="..\..\..\..\Downloads\Tutorial-master\Tutorial-master\Tutorial\gameobject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="util.cpp">
+    <ClCompile Include="..\..\..\..\Downloads\Tutorial-master\Tutorial-master\Tutorial\hammer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="bullet.cpp">
+    <ClCompile Include="..\..\..\..\Downloads\Tutorial-master\Tutorial-master\Tutorial\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Downloads\Tutorial-master\Tutorial-master\Tutorial\util.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="game.h">
+    <ClInclude Include="..\..\..\..\Downloads\Tutorial-master\Tutorial-master\Tutorial\warrior.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="config.h">
+    <ClInclude Include="..\..\..\..\Downloads\Tutorial-master\Tutorial-master\Tutorial\bullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="gameobject.h">
+    <ClInclude Include="..\..\..\..\Downloads\Tutorial-master\Tutorial-master\Tutorial\config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="player.h">
+    <ClInclude Include="..\..\..\..\Downloads\Tutorial-master\Tutorial-master\Tutorial\enemy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="enemy.h">
+    <ClInclude Include="..\..\..\..\Downloads\Tutorial-master\Tutorial-master\Tutorial\game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="util.h">
+    <ClInclude Include="..\..\..\..\Downloads\Tutorial-master\Tutorial-master\Tutorial\gameobject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="bullet.h">
+    <ClInclude Include="..\..\..\..\Downloads\Tutorial-master\Tutorial-master\Tutorial\hammer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Downloads\Tutorial-master\Tutorial-master\Tutorial\util.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

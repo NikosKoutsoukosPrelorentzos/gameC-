@@ -5,5 +5,4 @@
 #define WINDOW_HEIGHT 600
 #define CANVAS_WIDTH 1000
 #define CANVAS_HEIGHT 500
-
-#define GAME_DEBUG
+#define GAME_DEBUG 

@@ -9,8 +9,3 @@ int rand1to8()
 {
 	return rand() % 8 + 1;
 }
-
-int rand1to3()
-{
-	return rand() % 3 + 1;
-}

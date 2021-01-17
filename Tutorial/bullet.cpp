@@ -4,7 +4,7 @@
 #include "config.h"
 #include "util.h"
 #include "game.h"
-#include "player.h"
+#include "hammer.h"
 #include <math.h>
 
 void Bullet::update()
@@ -22,7 +22,7 @@ void Bullet::update()
 
 
 	angle = atan2(y - yBullet, x - xBullet);
-		
+
 	dx = (cos(angle) * speed);
 	dy = (sin(angle) * speed);
 
@@ -33,15 +33,15 @@ void Bullet::update()
 	{
 		active = false;
 	}
-	
+
 }
 
 void Bullet::draw()
 {
-	
+
 	graphics::Brush br;
 
-	br.texture = std::string(ASSET_PATH) + "ppo.png";
+	br.texture = std::string(ASSET_PATH) + "bullet.png";
 	br.outline_opacity = 0.0f;
 	graphics::drawRect(pos_x, pos_y, 30, 30, br);
 	br.texture = "";
@@ -90,3 +90,4 @@ float Bullet::window2canvasY(float y)
 {
 	return y * CANVAS_HEIGHT / (float)window_height;
 }
+
