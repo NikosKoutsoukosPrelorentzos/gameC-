@@ -4,6 +4,21 @@
 #include "util.h"
 #include "game.h"
 
+float Enemy::getSize()
+{
+	return size;
+}
+
+void Enemy::newRandom()
+{
+	random = rand1to8();
+}
+
+void Enemy::setSize(float newSize)
+{
+	size = newSize;
+}
+
 void Enemy::update()
 {
 
@@ -78,8 +93,22 @@ void Enemy::draw()
 
 void Enemy::init()
 {
-	size = 50 + 100 * rand0to1();
-	speed = 1.0f * rand0to1();
+	switch(rand1to3())
+	{
+	case 1:
+		size = 150;
+		break;
+	case 2:
+		size = 250;
+		break;
+	case 3:
+		size = 350;
+		break;
+	default:
+		break;
+	}
+	
+	speed = 0.2f * rand0to1();
 
 	random = rand1to8();
 	

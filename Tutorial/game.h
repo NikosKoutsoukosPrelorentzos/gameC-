@@ -15,7 +15,8 @@ class Game
 	Enemy* meteorite3 = nullptr;
 	void spawnMeteorite();
 	void checkMeteorite();
-	bool checkCollision(Enemy *meteorite);
+	bool checkCollisionWithBullet(Enemy *meteorite);
+	bool checkCollisionWithPlayer(Enemy* meteoritee);
 	status_t status = STATUS_START;
 
 	unsigned int window_width = WINDOW_WIDTH
@@ -30,6 +31,7 @@ class Game
 	void drawStartScreen();
 	void drawLevelScreen();
 public:
+	
 	float playerX() { return player->getPosX(); }
 	float playerY() { return player->getPosY(); }
 	void setDebugMode(bool d) { debug_mode = d; }

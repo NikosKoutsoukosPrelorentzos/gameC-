@@ -135,3 +135,10 @@ Disk Player::getCollisionHull() const
 	disk.radius = 55.0f;
 	return disk;
 }
+
+void Player::deleteBullet()
+{
+	delete bullet;
+	bullet = nullptr;
+	flag = true;
+}

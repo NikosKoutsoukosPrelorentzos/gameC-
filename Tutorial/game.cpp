@@ -34,15 +34,14 @@ void Game::checkMeteorite()
 	}
 }
 
-bool Game::checkCollision(Enemy *meteoritee)
+bool Game::checkCollisionWithBullet(Enemy *meteoritee)
 {
 	if (!player || !meteoritee) {
 		return false;
 	}
 	bullet = player->currBullet();
-	Disk d1 = player->getCollisionHull();
-	Disk d2 = meteoritee->getCollisionHull();
 
+	Disk d2 = meteoritee->getCollisionHull();
 	if (bullet) {
 		Disk d3 = bullet->getCollisionHull();
 		float dx2 = d3.cx - d2.cx;
@@ -52,6 +51,18 @@ bool Game::checkCollision(Enemy *meteoritee)
 			return true;
 		}
 	}
+	return false;
+}
+
+
+
+bool Game::checkCollisionWithPlayer(Enemy* meteoritee)
+{
+	if (!player || !meteoritee) {
+		return false;
+	}
+	Disk d1 = player->getCollisionHull();
+	Disk d2 = meteoritee->getCollisionHull();
 
 	float dx = d1.cx - d2.cx;
 	float dy = d1.cy - d2.cy;
@@ -66,6 +77,9 @@ bool Game::checkCollision(Enemy *meteoritee)
 		return false;
 	}
 }
+
+
+
 
 void Game::updateStartScreen()
 {
@@ -108,19 +122,61 @@ void Game::updateLevelScreen()
 	}
 
 
-	if (checkCollision(meteorite))
+	if (checkCollisionWithBullet(meteorite))
+	{
+		player->deleteBullet();
+		if (meteorite->getSize() == 150) {
+			delete meteorite;
+			meteorite = nullptr;
+		}
+		else {
+			meteorite->setSize(meteorite->getSize() - 100);
+			meteorite->newRandom();
+		}
+	}
+
+	if (checkCollisionWithBullet(meteorite2))
+	{
+		player->deleteBullet();
+		if (meteorite2->getSize() == 150) {
+			delete meteorite2;
+			meteorite2 = nullptr;
+		}
+		else {
+			meteorite2->setSize(meteorite2->getSize() - 100);
+			meteorite2->newRandom();
+		}
+	}
+
+	if (checkCollisionWithBullet(meteorite3))
+	{
+		player->deleteBullet();
+		if (meteorite3->getSize() == 150) {
+			delete meteorite3;
+			meteorite3 = nullptr;
+		}
+		else {
+			meteorite3->setSize(meteorite3->getSize() - 100);
+			meteorite3->newRandom();
+		}
+	}
+
+
+
+	//CHECH COLLISION WITH PLAYER
+	if (checkCollisionWithPlayer(meteorite))
 	{
 		delete meteorite;
 		meteorite = nullptr;
 	}
 
-	if (checkCollision(meteorite2))
+	if (checkCollisionWithPlayer(meteorite2))
 	{
 		delete meteorite2;
 		meteorite2 = nullptr;
 	}
 
-	if (checkCollision(meteorite3))
+	if (checkCollisionWithPlayer(meteorite3))
 	{
 		delete meteorite3;
 		meteorite3 = nullptr;
@@ -225,6 +281,8 @@ void Game::drawLevelScreen()
 	fr.gradient = false;
 	graphics::drawRect(window2canvasX(ms.cur_pos_x), window2canvasY(ms.cur_pos_y), 30,30, fr);
 }
+
+
 
 void Game::update()
 {

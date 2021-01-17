@@ -13,6 +13,9 @@ class Enemy : public GameObject, public Collidable
 	bool active = true;
 
 public:
+	float getSize();
+	void newRandom();
+	void setSize(float newSize);
 	void update() override;
 	void draw() override;
 	void init() override;
